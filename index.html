@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting</title>
+    <!-- Use a premium font to match the aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Vibrant Blue from the image */
+            --primary-color: #2563EB;
+            --bg-dot-color: #E5E7EB;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            /* Dot pattern background */
+            background-image: radial-gradient(var(--bg-dot-color) 2px, transparent 2px);
+            background-size: 32px 32px;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            /* Spacing between lines */
+            opacity: 0;
+            /* Start hidden */
+            animation: textFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            padding: 20px;
+        }
+
+        .line {
+            display: flex;
+            align-items: center;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            /* Responsive font size */
+            font-weight: 500;
+            color: var(--primary-color);
+            line-height: 1.1;
+            white-space: nowrap;
+            letter-spacing: -0.02em;
+        }
+
+        /* Helper for spacing around emojis/icons */
+        .spacer {
+            width: 0.3em;
+        }
+
+        .spacer-sm {
+            width: 0.15em;
+        }
+
+        /* Emoji Base Styles */
+        .emoji {
+            display: inline-block;
+            line-height: 1;
+            /* Ensure emojis align nicely with text cap height */
+            position: relative;
+            top: 0.02em;
+        }
+
+        /* Specific Icon Styles */
+        .hand-wave {
+            /* Slight wave animation on load/hover */
+            animation: wave 2s infinite;
+            transform-origin: 70% 70%;
+        }
+
+        .arrow {
+            font-weight: 400;
+            font-family: system-ui, -apple-system, sans-serif;
+            /* Use system font for clean arrow */
+            margin: 0 0.1em;
+            position: relative;
+            top: -0.05em;
+            /* Optical adjustment */
+        }
+
+        /* Animations */
+        @keyframes textFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            10% {
+                transform: rotate(14deg);
+            }
+
+            20% {
+                transform: rotate(-8deg);
+            }
+
+            30% {
+                transform: rotate(14deg);
+            }
+
+            40% {
+                transform: rotate(-4deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+
+            60% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Hover interaction for the whole container to re-trigger subtle effects if desired */
+        .container:hover .hand-wave {
+            animation-play-state: running;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+        <!-- Line 1: HI [wave], FRIEND! -->
+        <div class="line">
+            HI <span class="spacer-sm"></span> <span class="emoji hand-wave">👋</span>, FRIEND!
+        </div>
+
+        <!-- Line 2: [sparkles] SOMETHING NEW -->
+        <div class="line">
+            <span class="emoji">✨</span> <span class="spacer"></span> SOMETHING <span class="spacer"></span> NEW
+        </div>
+
+        <!-- Line 3: IS COMING [rocket] SOON. -->
+        <div class="line">
+            IS COMING <span class="spacer"></span> <span class="emoji">🚀</span> <span class="spacer"></span> SOON.
+        </div>
+    </main>
+
+</body>
+
+</html>
